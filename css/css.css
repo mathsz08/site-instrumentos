@@ -1,0 +1,273 @@
+
+.header div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header div h1{
+    font-family: 'Playfair Display SC', serif;
+    -webkit-text-stroke-color: #f8c032;
+    -webkit-text-stroke-width: 0.001px;
+    color:  #f1af09;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 3em;
+    display: inline-block;
+    position: relative;
+    top: 2em;
+}
+.icon_piano{
+    height:4em ;
+    width: 4em;  
+    margin:0 10px 0 10px; 
+}
+.icon_user{
+    height:2em ;
+    width: 2em;  
+    margin:0 10px 0 15px; 
+}
+.openbtn{
+    height: 3em;
+    width: 3em;
+    margin:0 15px 0 5px; 
+    cursor: pointer;
+}
+.sidebar{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#212529 ;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.sidebar a{
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1af09;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar a:hover{
+    color: #fcca4e;
+}
+.sidebar .closebtn{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;    
+}
+.main{
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+
+
+/*nav bar copnfig*/
+.navbar-nav .nav-item{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+main h2{
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 1em;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 40px;
+
+}
+.instrumentos{
+    margin: 2em 10em;
+}
+.instrumentos ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
+}
+.instrumentos ul li{
+    display: flex;
+    margin: 30px 20px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 15rem;
+}
+.instrumentos p{
+    color: black;
+    font-family: 'Cinzel', serif;
+    margin: 5px 0;
+    text-align: center;
+}
+.instrumentos img{
+    width: 9em;
+    height: 9em;
+    transition:all 5s ;
+}
+.instrumentos ul li:hover{
+    transform: scale(1.03); 
+    border-radius: 0.25rem;
+    border: 1px solid #f1af09;
+    
+}
+li .button{
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Cinzel', serif;
+    border-color: black;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.carrinho{
+    position: sticky;
+    top: 10%;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
+    height: 100px;
+}
+.shop-icon{
+    position: absolute;
+    top: 70%;
+    right: 1%;
+    height: 150%;
+    width: 10%;
+    padding: 20px;
+}
+.carrinho a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.carrinho img{
+    width: 30px;    
+}
+.carrinho p{
+    color: black;
+    font-size: 15px;
+    display: inline-block;
+   
+}
+.carrinho p #resultado{
+    display: inline-block;
+}
+
+
+.formulario{
+    flex-direction: column;
+    margin: 5em;
+    color: blue;
+    
+}
+.namee{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+            
+}
+.emaill{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.senhaa{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.cpff{
+   -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.radioo{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.submitt{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.enderecoo{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.dataa{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}
+.cupomm{
+    -webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0.75em 1em;
+	border: solid 1px #dddddd;
+	background: #fff;
+	width: 100%;
+}  
+.but_final_container{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+.but{
+    width: 15%;
+    height:30%;
+    border-radius:5px;
+    background-color: white;
+    border: solid 1px black;
+}      
+footer{
+    background-image: url(./bg.jpg);
+    width: 100%;
+    height: 210px;  
+}
+footer p{
+    margin-top:3rem ;
+    color: white;
+    text-align: center;
+}
