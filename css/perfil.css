@@ -1,0 +1,66 @@
+html, body
+{
+    height: 100%;
+}
+
+.username{
+    font-size: 18px;
+    margin-top: 14px;
+    color: #fff
+}
+.info{
+    text-align: center;
+    list-style: none;
+    padding: 25px;
+    font-size: 25px;
+
+}
+.perfilcontainer{
+    height: 350px;
+    padding: 35px;
+    width: 70%;
+    background-image: url(../imagem/background10.jpg);
+    border-bottom-left-radius: 5em;
+    border-bottom-right-radius: 5em;
+}
+.mainpepe{
+    height: 100%;
+    width: 100%;
+}
+.perfil{
+    
+    
+}
+.foto{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.email{
+    text-decoration: none;
+    color:orange;
+}
+.email:hover{
+    color:red;
+}
+.nascimento{
+    text-decoration: none;
+    color:orange;
+}
+.nascimento:hover{
+    color:red;
+}
+.telefone{
+    text-decoration: none;
+    color:orange;
+}
+.telefone:hover{
+    color:red;
+}
+.endereco{
+    text-decoration: none;
+    color:orange;
+}
+.endereco:hover{
+    color:red;
+}
