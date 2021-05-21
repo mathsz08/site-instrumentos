@@ -139,13 +139,13 @@
         </div>
     </div>
 </nav>
-<div class="mainpepe d-flex justify-content-center align-items-center">
+<div class="mainpepe d-flex justify-content-center ">
     <div class="row perfilcontainer">
         <div class="col-6">
             <div>
 
                 <div class="perfil">
-                    <img class="foto" src="./imagem/crianca.jpg">
+                    <center><img class="foto" src="./imagem/crianca.jpg"></center>
                     <h1 class="username">Leonardo Cestari</h1>
                 </div>
             </div>

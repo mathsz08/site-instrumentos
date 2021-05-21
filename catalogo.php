@@ -139,38 +139,36 @@
         </nav>
         <body>
             <main class="main" id="main">
-                <div>
-                    <div>Filtros</div>
-                </div>
                 <div class="instrumentos">
-                    <?php
+                    <ul>
+                        <?php
 
-                        $tipo = $_GET['tipo'];
-                        $servername = 'localhost';
-                        $user ='root';
-                        $pass = '';
-                        $bd = 'loja_instrumentos';
+                            $tipo = $_GET['tipo'];
+                            $servername = 'localhost';
+                            $user ='root';
+                            $pass = '';
+                            $bd = 'li';
 
-                        $conn = new mysqli($servername,$user,$pass,$bd);
-                        $sql = "SELECT * FROM acessorios";
-                        $dados = $conn->query($sql);
+                            $conn = new mysqli($servername,$user,$pass,$bd);
+                            $sql = "SELECT * FROM produtos WHERE tipo = '$tipo' ";
+                            $dados = $conn->query($sql);
 
 
-                        if($dados -> num_rows > 0){
-                            while($row = $dados->fetch_array()){
-                                $id = $row["id_acess"];
-                                echo"
-                                <li style='list-style:none'>
-
-                                    <a style='text-decoration: none;' href=produto.php?n=$id>
-                                        <p>".$row['nome'] ."</p>
-                                        <center><img src='".$row['img']."'></center>
-                                        <p> R$  ".$row['preco'].".00 </p>
-                                    </a>
-                                </li>";
+                            if($dados -> num_rows > 0){
+                                while($row = $dados->fetch_array()){
+                                    $id = $row["id_prod"];
+                                    echo "
+                                    <li style='list-style:none'>
+                                        <a style='text-decoration: none;' href=produto.php?n=$id>
+                                            <p>".$row['nome'] ."</p>
+                                            <center><img src='".$row['img']."'></center>
+                                            <p> R$  ".$row['valor'].".00 </p>
+                                        </a>
+                                    </li>";
+                                }
                             }
-                        }
-                    ?>
+                        ?>
+                    </ul>
                 </div>
             </main>
         

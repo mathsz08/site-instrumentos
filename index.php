@@ -68,7 +68,7 @@
                         echo "<a href='#'> Ola ".$_SESSION['user']."</a>";
                     }
                 ?>
-                <a href="#">Perfil</a>
+                <a href="perfil.php">Perfil</a>
                 <a href="#">Configurações</a>
                 <a href="#">Pedidos</a>
                 <?php echo "<a href=logoff.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Sair</a>" ?>
@@ -143,7 +143,7 @@
             </nav>
     <body>
         <main class="main"  id="main">
-            <h2>Produtos</h2>
+            <h2>Instrumentos</h2>
             <div class="instrumentos">
                 <ul>
                     <?php
@@ -151,15 +151,44 @@
                         $servername = 'localhost';
                         $user ='root';
                         $pass = '';
-                        $bd = 'loja_instrumentos';
+                        $bd = 'li';
                     
                         $conn = new mysqli($servername,$user,$pass,$bd);
-                        $sql = "SELECT id_inst,nome,img,preco FROM instrumento ";
+                        $sql = "SELECT id_prod,nome,img,valor FROM produtos WHERE tipo = 'inst_tecla' OR tipo = 'inst_cord' OR tipo = 'inst_perc'OR tipo = 'inst_sopro' ";
                         $dados = $conn-> query($sql);
 
                         if($dados -> num_rows > 0){
                             while($row = $dados->fetch_assoc()){
-                                $id = $row["id_inst"];
+                                $id = $row["id_prod"];
+                                echo "
+                                    <li>
+                                        <a style='text-decoration: none;' href=produto.php?n=$id>
+                                            <p>".$row['nome'] ."</p>
+                                            <center><img src='".$row['img']."'></center>
+                                            <p> R$  ".$row['valor'].".00 </p>
+                                        </a>
+                                    </li>";
+                            }
+                        } 
+                    ?>
+
+                </ul>
+                <h2>Acessorios</h2>
+                <ul>
+                    <?php
+
+                        $servername = 'localhost';
+                        $user ='root';
+                        $pass = '';
+                        $bd = 'li';
+                    
+                        $conn = new mysqli($servername,$user,$pass,$bd);
+                        $sql = "SELECT id_prod,nome,img,valor FROM produtos WHERE tipo = 'acess_tecla' OR tipo = 'acess_cord' OR tipo = 'acess_perc'OR tipo = 'acess_sopro' ";
+                        $dados = $conn-> query($sql);
+
+                        if($dados -> num_rows > 0){
+                            while($row = $dados->fetch_assoc()){
+                                $id = $row["id_prod"];
                                 echo "
 
                                     <li>
@@ -167,15 +196,17 @@
                                         <a style='text-decoration: none;' href=produto.php?n=$id>
                                             <p>".$row['nome'] ."</p>
                                             <center><img src='".$row['img']."'></center>
-                                            <p> R$  ".$row['preco'].".00 </p>
+                                            <p> R$  ".$row['valor'].".00 </p>
                                         </a>
                                     </li>";
-                                }
+                            }
                         } 
                     ?>
 
                 </ul>
             </div>
+
+
             <div class="but_final_container">
                 <button class="but"value="Finalizar compra" id="botao_carrinho" >Finalizar compra</button>
             </div>

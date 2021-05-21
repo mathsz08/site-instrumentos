@@ -41,11 +41,11 @@
                     echo "<a href=''> Ola ".$_SESSION['user']."</a>";
                 }
             ?>
-            <a href="#">Perfil</a>
+            <a href="perfil.php">Perfil</a>
             <a href="#">Configurações</a>
             <a href="#">Pedidos</a>
+            <?php echo "<a href=logoff.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Sair</a>" ?>
 
-            <?php echo "<a href= logoff.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Sair</a>" ?>
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
@@ -125,10 +125,10 @@
                         $servername = 'localhost';
                         $user ='root';
                         $pass = '';
-                        $bd = 'loja_instrumentos';
+                        $bd = 'li';
                     
                         $conn = new mysqli($servername,$user,$pass,$bd);
-                        $sql = "SELECT id_inst,nome,img,preco FROM instrumento WHERE id_inst = $id";
+                        $sql = "SELECT id_prod,nome,img,valor FROM produtos WHERE id_prod = $id";
                         $dados = $conn-> query($sql);
 
                         if($dados -> num_rows > 0){
@@ -144,8 +144,8 @@
                                     </div>
                                     <form action='add_cart.php' method='POST'>
                                         <div style='border: 1px solid black; border-radius: 0.25em; padding:'1em' '>
-                                            <p style='text-align:center;font-size: 2em;'> R$ ".$row['preco']. ",00</p>
-                                            <center><input type = 'number' name='qnt'></input><button class='but-prod' type='submit'> Adicionar ao carrinho </button></center>
+                                            <p style='text-align:center;font-size: 2em;'> R$ ".$row['valor']. ",00</p>
+                                            <center><input type = 'number' name='qnt' min='1'></inputs><button class='but-prod' type='submit'> Adicionar ao carrinho </button></center>
                                         </div>
                                     </form>
                                 </div>";
