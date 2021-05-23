@@ -65,11 +65,15 @@
                         echo "<a href= Login.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Login</a>";
                         echo "<a href=Login.php'>Cadastre-se</a>";
                     }else{
-                        echo "<a href='#'> Ola ".$_SESSION['user']."</a>";
+                        echo "<a href='#'> Olá, ".$_SESSION['user']."</a>";
+                    }
+                    if(isset($_SESSION['id_usu'])){
+                        echo "<a href='perfil.php?id=".$_SESSION['id_usu']."'>Perfil</a>
+                        <a href='#'>Configurações</a>";
+                    }else{
+                        echo "<a href= Login.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Perfil</a>";
                     }
                 ?>
-                <a href="perfil.php">Perfil</a>
-                <a href="#">Configurações</a>
                 <a href="#">Pedidos</a>
                 <?php echo "<a href=logoff.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Sair</a>" ?>
             </div>
