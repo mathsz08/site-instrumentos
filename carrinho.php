@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $_SESSION['valor']= 0;
 	if(isset($_GET['pedido'])){
 		$compras = $_GET['pedido'];
 	}else{
@@ -18,6 +20,7 @@
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css_bts/bootstrap.min.css">
         <link rel="stylesheet" href="css/css.css">
+        <link rel= "stylesheet" href="css/css_carrinho.css">
 
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -137,12 +140,24 @@
     </head>
     <body>
     <div id="sidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="fecharnav()">&times;</a>
-            <a href="#">Perfil</a>
-            <a href="#">Configurações</a>
-            <a href="#">Pedidos</a>
-            <a href="#">Sair</a>
-        </div>
+    <a href="javascript:void(0)" class="closebtn" onclick="fecharnav()">&times;</a>
+                <?php
+
+                    if(!isset($_SESSION['user'])|| $_SESSION['logado'] != TRUE){
+                        echo "<a href= Login.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Login</a>";
+                        echo "<a href=cadastro.php?>Cadastre-se</a>";
+                    }else{
+                        echo "<a href='#'> Olá, ".$_SESSION['user']."</a>";
+                    }
+                    if(isset($_SESSION['id_usu'])){
+                        echo "<a href='perfil.php?id=".$_SESSION['id_usu']."'>Perfil</a>";
+                    }else{
+                        echo "<a href= Login.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Perfil</a>";
+                    }
+                ?>
+                <a href="#">Pedidos</a>
+                <?php echo "<a href=logoff.php?p=".$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'].">Sair</a>" ?>
+            </div>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
             <div class="container-fluid">
@@ -158,7 +173,7 @@
                                 Instrumentos de Cordas
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Acessorios</a></li>
+                                <li><a class="dropdown-item" href="catalogo.php?tipo=acess_cord">Acessorios</a></li>
                                 <li><a class="dropdown-item" href="#">Amplificadores</a></li>
                                 <li><a class="dropdown-item" href="#">Pedais e Pedaleiras</a></li>
                                 <li><a class="dropdown-item" href="#">Instrumentos</a></li>
@@ -208,67 +223,82 @@
                         </li>
                             
                     </ul>
-                    <a class="navbar-brand" href="#"><img class="icon_piano"src="imagem/icon_piano.png"></a>
+                    <a class="navbar-brand" href="index.php"><img class="icon_piano"src="imagem/icon_piano.png"></a>
                     </div>
             </div>
         </nav>
         <main>
-            <h2>carrinho de compras</h2>
+            <center><h2>carrinho de compras</h2></center>
+
+            <center><div class="cart-div-ext">
+                <ul class="display-carrinho">
+                    <?php    
+                        $msg = FALSE;
+                        $servername = 'localhost';
+                        $user ='root';
+                        $pass = '';
+                        $bd = 'li';
+                        
+                        $conn = new mysqli($servername,$user,$pass,$bd);
+                        for($i = 0 ; $i<= count($_SESSION['carrinho'])-1;$i++ ){
+                            $sql="SELECT img,valor,nome FROM produtos WHERE id_prod=".$_SESSION['carrinho'][$i].";";
+                            $dados = $conn -> query($sql);
+                            if($dados -> num_rows > 0){
+                                while($row = $dados ->  fetch_assoc()){
+                                    $_SESSION['valor'] = $row['valor'] +  $_SESSION['valor'];
+                                    echo"
+                                        <li>
+                                            <div class='cart-div-int'>
+                                               
+                                                <img class='cart-img'src=".$row['img'].">
+                                                    <div style='margin-top:40px; margin-left:150px'>
+                                                        <p class='cart-nome'>".$row['nome']."</p>
+                                                        <p class= 'cart-val'>R$ ".$row['valor'].",00 </p> 
+                                                    </div>
+                                            </div>
+                                        </li>";
+                                }
+                            }
+                        }
+                        
+                    ?>
+                </ul>
+
+            </div></center>
+
+
+
+
             <div class="formulario">
 
-            <form name="teste" id="dados_cliente">
-                <div class="namee">
+            <form name="teste" id="dados_cliente" action="fin_compra.php"  method="POST">
                 
-                    <label for="nomeid">Nome: </label>
-                    <input type="text" size="24" id="nomeid">
-                </div>
-
-                <div class="emaill">  
-                <label for="emailid">Email: </label>
-                <input type="text" size="24" id="emailid">
-                </div>  
 
                 <!-- <div class="senhaa"> 
                 <label for="senhaid">Senha: </label>
                 <input type="password" size="12" id="senhaid">
                 </div>  -->
+ 
+                    <div class="cupomm">
+                            <p><?php echo "Total: R$".$_SESSION['valor'].",00" ?></p>
+                            <label for="cupomid">Cupom de Desconto(opcional): </label>
+                            <input type="text" size="15" id="cupomid">
+                    </div>
 
-            <div class="cidade">
-                
-                    <label for="endid">Cidade: </label>
-                    <input type="text" size="24" id="cidadeid">
-            </div>
+                    <div class="check-box">
 
-            <div class="cpff">  
-                    <label for="cpfid">CPF: </label>
-                    <input type="text" size="12" id="cpfid">
-                </div>  
-                <div class="cupomm">
-                        <label for="cupomid">Cupom de Desconto(opcional): </label>
-                        <input type="text" size="15" id="cupomid">
+                        <input type="checkbox" id="confi" value="yes" >
+                        <label form="confi">Li os termos de Requisto da Compra</label>
+
+                    </div>  
+
+                <div class="submitt"> 
+                     <button name="botão legal" >Enviar</button>
                 </div>
-
-                <div class="radioo"> 
-                    <input type="radio" id="credi" name="paga" value="crédito"/>
-                    <label for="credi">Crédito</label><br>
-                    <input type="radio" id="debi" name="paga" value="débito"/>
-                    <label for="debi">Débito</label><br>
-                    <input type="radio" id="boleto" name="paga" value="boleto"/checked>
-                    <label for="outros">Boleto</label><br>
-                </div>  
-
-                <div class="check-box">
-
-                    <input type="checkbox" id="confi" value="yes" >
-                    <label form="confi">Li os termos de Requisto da Compra</label>
-
-                </div>  
 
         </form>
 
-                <div class="submitt"> 
-                    <button id="botao_click" name="botão legal">Enviar</button>
-                </div>  
+          
 
 
             

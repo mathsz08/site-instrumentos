@@ -17,6 +17,8 @@
                 $msg = TRUE;
                 $nome = $row['nome'];
                 $_SESSION["id_usu"] = $row['id_cliente'];
+                $_SESSION['carrinho'] = array();
+                $_SESSION['valor'] = 0;
             }
         }
     }

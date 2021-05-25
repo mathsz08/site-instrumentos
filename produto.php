@@ -9,7 +9,7 @@
 
             <script type="text/javascript" src="../p1/php/index.js"></script>
             <script type="text/javascript" src="../p1/js_bts/bootstrap.bundle.js"></script>
-            
+
 
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital@1&display=swap" 
@@ -128,7 +128,7 @@
                         $bd = 'li';
                     
                         $conn = new mysqli($servername,$user,$pass,$bd);
-                        $sql = "SELECT id_prod,nome,img,valor FROM produtos WHERE id_prod = $id";
+                        $sql = "SELECT id_prod,nome,img,valor,descricao FROM produtos WHERE id_prod = $id";
                         $dados = $conn-> query($sql);
 
                         if($dados -> num_rows > 0){
@@ -139,13 +139,13 @@
                                 <img class='prod_img' src=".$row['img'].">
                                 <div class='info'>
                                     <h3>".$row['nome']."</h3>
-                                    <p class='discr'>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>
+                                    <p class='discr'>".$row['descricao']."<p>
                                     <div style='height: 100px;max-width:200px'>
                                     </div>
-                                    <form action='add_cart.php' method='POST'>
+                                    <form action='add_cart.php?n=".$row['id_prod']."' method='POST'>
                                         <div style='border: 1px solid black; border-radius: 0.25em; padding:'1em' '>
                                             <p style='text-align:center;font-size: 2em;'> R$ ".$row['valor']. ",00</p>
-                                            <center><input type = 'number' name='qnt' min='1'></inputs><button class='but-prod' type='submit'> Adicionar ao carrinho </button></center>
+                                            <center><input type = 'number' name='qnt' id='qnt' min='1'></inputs><button class='but-prod' id='but_car' type='submit'> Adicionar ao carrinho </button></center>
                                         </div>
                                     </form>
                                 </div>";
@@ -155,6 +155,7 @@
                 </div>
             </main>
         </body>
+        <script type="text/javascript" src="../p1/js/add_cart.js"></script>
 
         <footer>
             <p>&copy; Copyright Loja de Instrumentos - 2021</p>

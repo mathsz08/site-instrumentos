@@ -292,7 +292,9 @@
                     </div>
                 </div>
                 <center><p>ou </p></center>
-                <center><button>Apague sua conta</button></center>
+                <form action= 'del_dados.php'>                        
+                    <center><button>Apague sua conta</button></center>
+                </form>
         <footer>
             <p>&copy; Copyright Loja de Instrumentos - 2021</p>
         </footer>

@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25em;
+    height: 29em;
     width: 25em;
     padding: 10px;
     background-color: white;
@@ -39,7 +39,7 @@ body {
 .entries{
     display: grid;
     justify-content: center;
-    padding: 30px;
+    padding: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
 
@@ -57,7 +57,7 @@ body {
     border-color: black;
     border-style: solid;
     font-size: 30px;
-    margin-top: 1em;
+    margin-top: 0.3em;
     height: 50px;
     width: 70%;
     border-radius: 10px;
@@ -65,4 +65,7 @@ body {
 }
 .but_log:hover{
     background-color: #f1af09;
+}
+.lista li{
+    margin: 10px 0px 10px 0px;
 }

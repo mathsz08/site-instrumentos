@@ -1,0 +1,27 @@
+.carr-div-ext{
+    display: flex;
+}
+.cart-div-int{
+    display:flex;
+    align-content: center;
+
+}
+.display-carrinho{
+    margin-top: 50px;
+}
+.display-carrinho li{
+    border: 1px solid black;
+    margin: 5px;
+    width: 70%;
+}
+.cart-img{
+    width: 15%;
+    height: 15%;
+    margin: 10px;
+}
+.cart-nome{
+    font-size: 1.5em;
+}
+.cart-val{
+    font-size: 1.5em;
+}
